@@ -195,11 +195,14 @@ jobs:
           docker compose down --remove-orphans 2>&1 | Out-Null
           $LASTEXITCODE = 0
           exit 0
+
       - name: Build y levantar servicios
+        shell: powershell
         run: docker compose up --build -d
 
       - name: Esperar a que los servicios inicien
-        run: sleep 25
+        shell: powershell
+        run: Start-Sleep -Seconds 25
 
       - name: Verificar contenedores en ejecución
         shell: powershell
