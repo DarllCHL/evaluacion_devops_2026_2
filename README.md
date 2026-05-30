@@ -20,11 +20,11 @@ Aplicación de ejemplo en 3 capas usando Docker y Docker Compose:
 ---
 
 ## Estructura del proyecto
+
 tienda-tech-LOCAL
 ├── .github
-│   ├── workflows
-│   │   └── main.yml        # Pipeline CI/CD
-│   └── dependabot.yml      # Escaneo automático de dependencias
+│   └── workflows
+│       └── main.yml        # Pipeline CI/CD
 ├── docker-compose.yml
 ├── tienda-tech-frontend
 │   ├── Dockerfile
@@ -36,7 +36,7 @@ tienda-tech-LOCAL
 │   ├── package.json
 │   ├── server.js
 │   └── server.test.js      # Pruebas unitarias con Jest
-└── tienda-tech-db
+├── tienda-tech-db
 ├── Dockerfile
 └── init.sql
 
@@ -99,6 +99,7 @@ El archivo `docker-compose.yml` define los tres servicios:
 - La base de datos incluye **healthcheck** para garantizar que el backend solo inicie cuando MySQL esté listo
 - El backend tiene `restart: on-failure` para recuperarse ante errores
 - Los datos de MySQL se persisten en un volumen Docker (`dbdata`)
+- Cada servicio tiene límites de recursos configurados (`deploy.resources`) para garantizar estabilidad
 
 ---
 
@@ -132,6 +133,16 @@ docker compose logs db
 ```bash
 docker compose down -v
 ```
+
+---
+
+## Conclusiones
+
+### Reflexión individual — Matías Bustos
+*(Redactar sin apoyo de IA: aprendizaje personal y contribución al proyecto)*
+
+### Reflexión individual — Roberto González
+*(Redactar sin apoyo de IA: aprendizaje personal y contribución al proyecto)*
 
 ---
 
