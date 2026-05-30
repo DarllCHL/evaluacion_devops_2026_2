@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  # ─────────────────────────────────────────────
+# ─────────────────────────────────────────────
   # 1. Análisis de seguridad con Snyk (Node.js)
   # ─────────────────────────────────────────────
   snyk-scan:
@@ -26,6 +26,10 @@ jobs:
         working-directory: tienda-tech-backend
         run: npm install
 
+      - name: Auditoría de dependencias con npm audit
+        working-directory: tienda-tech-backend
+        run: npm audit --audit-level=high || true
+
       - name: Install Snyk CLI
         run: npm install -g snyk
 
@@ -33,14 +37,14 @@ jobs:
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN_3 }}
         working-directory: tienda-tech-backend
-        run: snyk test --severity-threshold=high 2>&1 || true
+        run: snyk test --severity-threshold=high
 
       - name: Generate Snyk JSON Report
         if: always()
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN_3 }}
         working-directory: tienda-tech-backend
-        run: snyk test --json > ../snyk-report.json || echo "Falló snyk test, pero se continúa"
+        run: snyk test --json > ../snyk-report.json || true
 
       - name: Upload Snyk JSON Report
         if: always()
@@ -48,7 +52,7 @@ jobs:
         with:
           name: snyk-report
           path: snyk-report.json
-
+          
   # ─────────────────────────────────────────────
   # 2. Tests del backend con MySQL en Actions
   # ─────────────────────────────────────────────
