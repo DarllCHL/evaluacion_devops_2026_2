@@ -137,6 +137,7 @@ jobs:
             -Dsonar.organization=darllchl
             -Dsonar.sources=tienda-tech-backend/server.js,tienda-tech-frontend
             -Dsonar.exclusions=**/node_modules/**
+            -Dsonar.cpd.exclusions=**/server.test.js
 
   # ─────────────────────────────────────────────
   # 4. Build de imágenes Docker
