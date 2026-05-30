@@ -139,10 +139,15 @@ docker compose down -v
 ## Conclusiones
 
 ### Reflexión individual — Matías Bustos
-*(Redactar sin apoyo de IA: aprendizaje personal y contribución al proyecto)*
+
+Yo en particular tuve muchas complicaciones para hacer andar el proyecto, al ser algo que no manejo me costo mucho, pero se logro al final, el como hacer que el sistema funcione tambien es tema, solo espero el haber cumplido con las exigencias del encargo y mas adelante perfecionar las cosas realizadas en el presente proyecto, gracias
 
 ### Reflexión individual — Roberto González
-*(Redactar sin apoyo de IA: aprendizaje personal y contribución al proyecto)*
+*(Redactar sin apoyo de IA: apReflexión individual — Roberto González
+Antes de este proyecto, DevOps era para mí una palabra que aparecía en ofertas de trabajo sin que yo supiera bien qué significaba. Sabía que tenía que ver con despliegues y automatización, pero no tenía claro cómo se conectaba con el día a día de desarrollar software. Este trabajo me obligó a entenderlo desde adentro.
+Mi contribución principal fue la documentación y el README. Al principio eso puede sonar como la parte "fácil", pero documentar bien un proyecto te exige entenderlo completo. No puedes explicar el pipeline si no sabes por qué Snyk va antes que los tests, o por qué el deploy necesita un runner local. Escribir el README me forzó a hacer preguntas que de otra forma quizás habría evitado.
+Lo que más me costó fue entender la relación entre Docker, docker-compose y los contenedores. Al principio los veía como lo mismo. Poco a poco fui entendiendo que Docker construye las imágenes, docker-compose orquesta cómo esas imágenes corren juntas, y los contenedores son las instancias vivas de todo eso. Cuando vi el healthcheck de la base de datos en el docker-compose.yml — ese mecanismo que hace que el backend espere a que MySQL esté listo antes de arrancar — algo hizo clic. Eso no es solo configuración técnica, es pensar en el orden en que las cosas ocurren en el mundo real.
+Me llevo de este proyecto que la automatización no es magia ni algo reservado para equipos grandes. Es disciplina: definir un orden, confiar en ese orden, y dejar que la máquina lo ejecute.rendizaje personal y contribución al proyecto)*
 
 ---
 
