@@ -1,0 +1,40 @@
+#version: "3.8"
+
+services:
+  frontend:
+    build: ./tienda-tech-frontend
+    container_name: tienda-tech-frontend
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
+
+  backend:
+    build: ./tienda-tech-backend
+    container_name: tienda-tech-backend
+    environment:
+      DB_HOST: db
+      DB_USER: alumno
+      DB_PASSWORD: alumno123
+      DB_NAME: tienda_tecnologica
+      DB_PORT: 3306
+    ports:
+      - "3001:3001"
+    depends_on:
+      - db
+
+  db:
+    build: ./tienda-tech-db
+    container_name: tienda-tech-db
+    ports:
+      - "3306:3306"
+    volumes:
+      - dbdata:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "alumno", "-palumno123"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  dbdata:

@@ -1,0 +1,202 @@
+name: Tienda Tech CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  # ─────────────────────────────────────────────
+  # 1. Análisis de seguridad con Snyk (Node.js)
+  # ─────────────────────────────────────────────
+  snyk-scan:
+    name: Snyk Security Scan
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4.2.2
+
+      - name: Set up Node.js 18
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install backend dependencies
+        working-directory: tienda-tech-backend
+        run: npm install
+
+      - name: Install Snyk CLI
+        run: npm install -g snyk
+
+      - name: Snyk test Node.js dependencies
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN_3}}
+        working-directory: tienda-tech-backend
+        run: snyk test --severity-threshold=high 2>&1 || true
+
+      - name: Generate Snyk JSON Report
+        if: always()
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN_3 }}
+        working-directory: tienda-tech-backend
+        run: snyk test --json > ../snyk-report.json || echo "Falló snyk test, pero se continúa"
+
+      - name: Upload Snyk JSON Report
+        if: always()
+        uses: actions/upload-artifact@v4.6.2
+        with:
+          name: snyk-report
+          path: snyk-report.json
+
+  # ─────────────────────────────────────────────
+  # 2. Tests del backend con MySQL en Actions
+  # ─────────────────────────────────────────────
+  test:
+    name: Run Backend Tests
+    runs-on: ubuntu-latest
+    needs: snyk-scan
+
+    services:
+      mysql:
+        image: mysql:8
+        env:
+          MYSQL_ROOT_PASSWORD: admin123
+          MYSQL_DATABASE: tienda_tecnologica
+          MYSQL_USER: alumno
+          MYSQL_PASSWORD: alumno123
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping -h localhost -u alumno -palumno123"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=10
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4.2.2
+
+      - name: Set up Node.js 18
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install backend dependencies
+        working-directory: tienda-tech-backend
+        run: npm install
+
+      - name: Esperar a que MySQL esté listo
+        run: |
+          until mysqladmin ping -h 127.0.0.1 -u alumno -palumno123 --silent; do
+            echo "Esperando MySQL..."
+            sleep 2
+          done
+
+      - name: Importar schema de la base de datos
+        run: mysql -h 127.0.0.1 -u alumno -palumno123 tienda_tecnologica < tienda-tech-db/init.sql
+
+      - name: Ejecutar tests
+        working-directory: tienda-tech-backend
+        env:
+          DB_HOST: 127.0.0.1
+          DB_USER: alumno
+          DB_PASSWORD: alumno123
+          DB_NAME: tienda_tecnologica
+          DB_PORT: 3306
+          PORT: 3001
+        run: npm test --if-present
+
+  # ─────────────────────────────────────────────
+  # 3. Análisis de calidad con SonarCloud
+  # ─────────────────────────────────────────────
+  sonar-analysis:
+    name: SonarCloud Analysis
+    runs-on: ubuntu-latest
+    needs: test
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4.2.2
+        with:
+          fetch-depth: 0
+
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_3 }}
+        with:
+          args: >
+            -Dsonar.projectKey=darllchl_evaluacion_devops_2026_2
+            -Dsonar.organization=darllchl
+            -Dsonar.sources=tienda-tech-backend/server.js,tienda-tech-frontend
+            -Dsonar.exclusions=**/node_modules/**
+
+  # ─────────────────────────────────────────────
+  # 4. Build de imágenes Docker
+  # ─────────────────────────────────────────────
+  build:
+    name: Build Docker Images
+    runs-on: ubuntu-latest
+    needs: sonar-analysis
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4.2.2
+
+      - name: Build imagen backend
+        run: docker build -t tienda-tech-backend:latest ./tienda-tech-backend
+
+      - name: Build imagen frontend
+        run: docker build -t tienda-tech-frontend:latest ./tienda-tech-frontend
+
+      - name: Build imagen db
+        run: docker build -t tienda-tech-db:latest ./tienda-tech-db
+
+      - name: Guardar imágenes como artifact
+        run: |
+          docker save tienda-tech-backend:latest | gzip > backend-image.tar.gz
+          docker save tienda-tech-frontend:latest | gzip > frontend-image.tar.gz
+
+      - name: Upload Docker image artifacts
+        uses: actions/upload-artifact@v4.6.2
+        with:
+          name: docker-images
+          path: |
+            backend-image.tar.gz
+            frontend-image.tar.gz
+
+  # ─────────────────────────────────────────────
+  # 5. Deploy con Docker Compose (self-hosted)
+  # ─────────────────────────────────────────────
+  deploy:
+    name: Deploy with Docker Compose
+    runs-on: self-hosted
+    needs: build
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4.2.2
+
+      - name: Limpiar contenedores anteriores
+        run: |
+          docker rm -f tienda-tech-frontend tienda-tech-backend tienda-tech-db || true
+          docker compose down --remove-orphans || true
+
+      - name: Build y levantar servicios
+        run: docker compose up --build -d
+
+      - name: Esperar a que los servicios inicien
+        run: sleep 25
+
+      - name: Verificar contenedores en ejecución
+        run: |
+          docker compose ps
+          docker compose logs backend
+          docker compose logs frontend
+
+      - name: Health check del backend
+        run: |
+          curl --fail http://localhost:3001/api/health || \
+          (echo "❌ Health check falló" && docker compose logs backend && exit 1)
