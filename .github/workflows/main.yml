@@ -99,15 +99,13 @@ jobs:
       - name: Ejecutar tests
         working-directory: tienda-tech-backend
         env:
-            DB_HOST: 127.0.0.1
-            DB_USER: alumno
-            DB_PASSWORD: alumno123
-            DB_NAME: tienda_tecnologica
-            DB_PORT: 3306
-            PORT: 3001
-        run: |
-            chmod +x node_modules/.bin/jest
-            npx jest
+          DB_HOST: 127.0.0.1
+          DB_USER: alumno
+          DB_PASSWORD: alumno123
+          DB_NAME: tienda_tecnologica
+          DB_PORT: 3306
+          PORT: 3001
+        run: npm test
 
   # ─────────────────────────────────────────────
   # 3. Análisis de calidad con SonarCloud
