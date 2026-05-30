@@ -21,7 +21,9 @@ services:
     ports:
       - "3001:3001"
     depends_on:
-      - db
+      db:
+        condition: service_healthy
+    restart: on-failure
 
   db:
     build: ./tienda-tech-db
@@ -35,6 +37,7 @@ services:
       interval: 10s
       timeout: 5s
       retries: 10
+      start_period: 30s
 
 volumes:
   dbdata:

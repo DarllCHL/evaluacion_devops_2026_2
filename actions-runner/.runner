@@ -1,0 +1,11 @@
+﻿{
+  "agentId": 2,
+  "agentName": "MATIAS_BUSTOS",
+  "poolId": 1,
+  "poolName": "Default",
+  "serverUrl": "https://pipelinesghubeus23.actions.githubusercontent.com/YfnYb3awlLrnFTuHP8RujLS4S7TDTK2ed22cesKOQo9EW4Cz8E/",
+  "gitHubUrl": "https://github.com/DarllCHL/prueba_EV_devops_1.0",
+  "workFolder": "_work",
+  "useV2Flow": true,
+  "serverUrlV2": "https://broker.actions.githubusercontent.com/"
+}
