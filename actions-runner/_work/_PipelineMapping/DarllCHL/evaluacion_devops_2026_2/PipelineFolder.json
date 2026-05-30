@@ -1,0 +1,12 @@
+﻿{
+  "repositoryName": "DarllCHL/evaluacion_devops_2026_2",
+  "pipelineDirectory": "evaluacion_devops_2026_2",
+  "workspaceDirectory": "evaluacion_devops_2026_2\\evaluacion_devops_2026_2",
+  "repositories": {
+    "DarllCHL/evaluacion_devops_2026_2": {
+      "repositoryPath": "evaluacion_devops_2026_2\\evaluacion_devops_2026_2",
+      "lastRunOn": "05/30/2026 14:00:23 -04:00"
+    }
+  },
+  "lastRunOn": "05/30/2026 14:05:32 -04:00"
+}

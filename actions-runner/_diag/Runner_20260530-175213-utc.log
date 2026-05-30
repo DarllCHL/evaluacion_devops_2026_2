@@ -1,0 +1,79 @@
+[2026-05-30 17:52:13Z INFO HostContext] No proxy settings were found based on environmental variables (http_proxy/https_proxy/HTTP_PROXY/HTTPS_PROXY)
+[2026-05-30 17:52:13Z INFO HostContext] Well known directory 'Bin': 'C:\Users\matia\OneDrive\Escritorio\clases\devops 2026\tienda-tech-LOCAL\actions-runner\bin'
+[2026-05-30 17:52:13Z INFO HostContext] Well known directory 'Root': 'C:\Users\matia\OneDrive\Escritorio\clases\devops 2026\tienda-tech-LOCAL\actions-runner'
+[2026-05-30 17:52:13Z INFO HostContext] Well known config file 'Credentials': 'C:\Users\matia\OneDrive\Escritorio\clases\devops 2026\tienda-tech-LOCAL\actions-runner\.credentials'
+[2026-05-30 17:52:13Z INFO HostContext] Well known directory 'Bin': 'C:\Users\matia\OneDrive\Escritorio\clases\devops 2026\tienda-tech-LOCAL\actions-runner\bin'
+[2026-05-30 17:52:13Z INFO HostContext] Well known directory 'Root': 'C:\Users\matia\OneDrive\Escritorio\clases\devops 2026\tienda-tech-LOCAL\actions-runner'
+[2026-05-30 17:52:13Z INFO HostContext] Well known config file 'Runner': 'C:\Users\matia\OneDrive\Escritorio\clases\devops 2026\tienda-tech-LOCAL\actions-runner\.runner'
+[2026-05-30 17:52:13Z INFO Listener] Runner is built for Windows (X64) - win-x64.
+[2026-05-30 17:52:13Z INFO Listener] RuntimeInformation: Microsoft Windows 10.0.26200.
+[2026-05-30 17:52:13Z INFO Listener] Version: 2.334.0
+[2026-05-30 17:52:13Z INFO Listener] Commit: f1995ede5d885c997d13d8eca5467c4ce97fe69c
+[2026-05-30 17:52:13Z INFO Listener] Culture: es-CL
+[2026-05-30 17:52:13Z INFO Listener] UI Culture: es-MX
+[2026-05-30 17:52:13Z INFO HostContext] Well known directory 'Bin': 'C:\Users\matia\OneDrive\Escritorio\clases\devops 2026\tienda-tech-LOCAL\actions-runner\bin'
+[2026-05-30 17:52:13Z INFO HostContext] Well known directory 'Root': 'C:\Users\matia\OneDrive\Escritorio\clases\devops 2026\tienda-tech-LOCAL\actions-runner'
+[2026-05-30 17:52:13Z INFO Listener] Validating directory permissions for: 'C:\Users\matia\OneDrive\Escritorio\clases\devops 2026\tienda-tech-LOCAL\actions-runner'
+[2026-05-30 17:52:13Z INFO CommandLineParser] Parse
+[2026-05-30 17:52:13Z INFO CommandLineParser] Parsing 1 args
+[2026-05-30 17:52:13Z INFO CommandLineParser] parsing argument
+[2026-05-30 17:52:13Z INFO CommandLineParser] HasArgs: False
+[2026-05-30 17:52:13Z INFO CommandLineParser] Adding Command: remove
+[2026-05-30 17:52:13Z INFO Listener] Arguments parsed
+[2026-05-30 17:52:13Z INFO Runner] ExecuteCommand
+[2026-05-30 17:52:13Z INFO ConfigurationStore] currentAssemblyLocation: C:\Users\matia\OneDrive\Escritorio\clases\devops 2026\tienda-tech-LOCAL\actions-runner\bin\Runner.Listener.dll
+[2026-05-30 17:52:13Z INFO HostContext] Well known directory 'Bin': 'C:\Users\matia\OneDrive\Escritorio\clases\devops 2026\tienda-tech-LOCAL\actions-runner\bin'
+[2026-05-30 17:52:13Z INFO ConfigurationStore] binPath: C:\Users\matia\OneDrive\Escritorio\clases\devops 2026\tienda-tech-LOCAL\actions-runner\bin
+[2026-05-30 17:52:13Z INFO HostContext] Well known directory 'Bin': 'C:\Users\matia\OneDrive\Escritorio\clases\devops 2026\tienda-tech-LOCAL\actions-runner\bin'
+[2026-05-30 17:52:13Z INFO HostContext] Well known directory 'Root': 'C:\Users\matia\OneDrive\Escritorio\clases\devops 2026\tienda-tech-LOCAL\actions-runner'
+[2026-05-30 17:52:13Z INFO ConfigurationStore] RootFolder: C:\Users\matia\OneDrive\Escritorio\clases\devops 2026\tienda-tech-LOCAL\actions-runner
+[2026-05-30 17:52:13Z INFO HostContext] Well known directory 'Bin': 'C:\Users\matia\OneDrive\Escritorio\clases\devops 2026\tienda-tech-LOCAL\actions-runner\bin'
+[2026-05-30 17:52:13Z INFO HostContext] Well known directory 'Root': 'C:\Users\matia\OneDrive\Escritorio\clases\devops 2026\tienda-tech-LOCAL\actions-runner'
+[2026-05-30 17:52:13Z INFO HostContext] Well known config file 'Runner': 'C:\Users\matia\OneDrive\Escritorio\clases\devops 2026\tienda-tech-LOCAL\actions-runner\.runner'
+[2026-05-30 17:52:13Z INFO ConfigurationStore] ConfigFilePath: C:\Users\matia\OneDrive\Escritorio\clases\devops 2026\tienda-tech-LOCAL\actions-runner\.runner
+[2026-05-30 17:52:13Z INFO HostContext] Well known directory 'Bin': 'C:\Users\matia\OneDrive\Escritorio\clases\devops 2026\tienda-tech-LOCAL\actions-runner\bin'
+[2026-05-30 17:52:13Z INFO HostContext] Well known directory 'Root': 'C:\Users\matia\OneDrive\Escritorio\clases\devops 2026\tienda-tech-LOCAL\actions-runner'
+[2026-05-30 17:52:13Z INFO HostContext] Well known config file 'MigratedRunner': 'C:\Users\matia\OneDrive\Escritorio\clases\devops 2026\tienda-tech-LOCAL\actions-runner\.runner_migrated'
+[2026-05-30 17:52:13Z INFO ConfigurationStore] MigratedConfigFilePath: C:\Users\matia\OneDrive\Escritorio\clases\devops 2026\tienda-tech-LOCAL\actions-runner\.runner_migrated
+[2026-05-30 17:52:13Z INFO HostContext] Well known directory 'Bin': 'C:\Users\matia\OneDrive\Escritorio\clases\devops 2026\tienda-tech-LOCAL\actions-runner\bin'
+[2026-05-30 17:52:13Z INFO HostContext] Well known directory 'Root': 'C:\Users\matia\OneDrive\Escritorio\clases\devops 2026\tienda-tech-LOCAL\actions-runner'
+[2026-05-30 17:52:13Z INFO HostContext] Well known config file 'Credentials': 'C:\Users\matia\OneDrive\Escritorio\clases\devops 2026\tienda-tech-LOCAL\actions-runner\.credentials'
+[2026-05-30 17:52:13Z INFO ConfigurationStore] CredFilePath: C:\Users\matia\OneDrive\Escritorio\clases\devops 2026\tienda-tech-LOCAL\actions-runner\.credentials
+[2026-05-30 17:52:13Z INFO HostContext] Well known directory 'Bin': 'C:\Users\matia\OneDrive\Escritorio\clases\devops 2026\tienda-tech-LOCAL\actions-runner\bin'
+[2026-05-30 17:52:13Z INFO HostContext] Well known directory 'Root': 'C:\Users\matia\OneDrive\Escritorio\clases\devops 2026\tienda-tech-LOCAL\actions-runner'
+[2026-05-30 17:52:13Z INFO HostContext] Well known config file 'MigratedCredentials': 'C:\Users\matia\OneDrive\Escritorio\clases\devops 2026\tienda-tech-LOCAL\actions-runner\.credentials_migrated'
+[2026-05-30 17:52:13Z INFO ConfigurationStore] MigratedCredFilePath: C:\Users\matia\OneDrive\Escritorio\clases\devops 2026\tienda-tech-LOCAL\actions-runner\.credentials_migrated
+[2026-05-30 17:52:13Z INFO HostContext] Well known directory 'Bin': 'C:\Users\matia\OneDrive\Escritorio\clases\devops 2026\tienda-tech-LOCAL\actions-runner\bin'
+[2026-05-30 17:52:13Z INFO HostContext] Well known directory 'Root': 'C:\Users\matia\OneDrive\Escritorio\clases\devops 2026\tienda-tech-LOCAL\actions-runner'
+[2026-05-30 17:52:13Z INFO HostContext] Well known config file 'Service': 'C:\Users\matia\OneDrive\Escritorio\clases\devops 2026\tienda-tech-LOCAL\actions-runner\.service'
+[2026-05-30 17:52:13Z INFO ConfigurationStore] ServiceConfigFilePath: C:\Users\matia\OneDrive\Escritorio\clases\devops 2026\tienda-tech-LOCAL\actions-runner\.service
+[2026-05-30 17:52:13Z INFO CommandSettings] Flag 'help': 'False'
+[2026-05-30 17:52:13Z INFO CommandSettings] Flag 'version': 'False'
+[2026-05-30 17:52:13Z INFO CommandSettings] Flag 'commit': 'False'
+[2026-05-30 17:52:13Z INFO CommandSettings] Flag 'check': 'False'
+[2026-05-30 17:52:13Z INFO CommandSettings] Command 'configure': 'False'
+[2026-05-30 17:52:13Z INFO CommandSettings] Command 'remove': 'True'
+[2026-05-30 17:52:13Z INFO CommandSettings] Flag 'local': 'False'
+[2026-05-30 17:52:13Z INFO ConfigurationStore] IsServiceConfigured()
+[2026-05-30 17:52:13Z INFO ConfigurationStore] IsServiceConfigured: False
+[2026-05-30 17:52:13Z INFO ConfigurationStore] IsConfigured()
+[2026-05-30 17:52:13Z INFO ConfigurationStore] IsConfigured: True
+[2026-05-30 17:52:13Z INFO ConfigurationStore] HasCredentials()
+[2026-05-30 17:52:13Z INFO ConfigurationStore] stored True
+[2026-05-30 17:52:13Z INFO ConfigurationStore] Read setting file: 406 chars
+[2026-05-30 17:52:13Z INFO CommandSettings] Arg 'token': ''
+[2026-05-30 17:52:13Z INFO CommandSettings] Flag 'unattended': 'False'
+[2026-05-30 17:52:13Z INFO PromptManager] ReadValue
+[2026-05-30 17:52:13Z INFO Terminal] WRITE: Enter runner remove token: 
+[2026-05-30 17:52:13Z INFO Terminal] READ SECRET
+[2026-05-30 17:54:24Z INFO Terminal] Read value: '***'
+[2026-05-30 17:54:24Z ERR  Terminal] WRITE ERROR: Http response code: NotFound from 'POST https://api.github.com/actions/runner-registration' (Request Id: B67F:157D7A:6ABBCA:7CEE23:6A1B244F)
+[2026-05-30 17:54:24Z ERR  Terminal] WRITE ERROR: {"message":"Not Found","documentation_url":"https://docs.github.com/rest","status":"404"}
+[2026-05-30 17:54:24Z ERR  Terminal] WRITE ERROR: Failed: Removing runner from the server
+[2026-05-30 17:54:24Z ERR  Runner] System.Net.Http.HttpRequestException: Response status code does not indicate success: 404 (Not Found).
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at GitHub.Runner.Listener.Configuration.ConfigurationManager.GetTenantCredential(String githubUrl, String githubToken, String runnerEvent)
+   at GitHub.Runner.Listener.Configuration.ConfigurationManager.UnconfigureAsync(CommandSettings command)
+   at GitHub.Runner.Listener.Runner.ExecuteCommand(CommandSettings command)
+[2026-05-30 17:54:24Z ERR  Terminal] WRITE ERROR: Response status code does not indicate success: 404 (Not Found).
+[2026-05-30 17:54:24Z INFO Listener] Runner execution has finished with return code 1
