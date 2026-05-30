@@ -15,7 +15,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4.2.2
+        uses: actions/checkout@v4
 
       - name: Set up Node.js 18
         uses: actions/setup-node@v4
@@ -31,7 +31,7 @@ jobs:
 
       - name: Snyk test Node.js dependencies
         env:
-          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN_3}}
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN_3 }}
         working-directory: tienda-tech-backend
         run: snyk test --severity-threshold=high 2>&1 || true
 
@@ -44,7 +44,7 @@ jobs:
 
       - name: Upload Snyk JSON Report
         if: always()
-        uses: actions/upload-artifact@v4.6.2
+        uses: actions/upload-artifact@v4
         with:
           name: snyk-report
           path: snyk-report.json
@@ -75,7 +75,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4.2.2
+        uses: actions/checkout@v4
 
       - name: Set up Node.js 18
         uses: actions/setup-node@v4
@@ -117,15 +117,16 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4.2.2
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
       - name: SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@master
+        uses: SonarSource/sonarqube-scan-action@v5
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_3 }}
+          SONAR_HOST_URL: https://sonarcloud.io
         with:
           args: >
             -Dsonar.projectKey=darllchl_evaluacion_devops_2026_2
@@ -143,7 +144,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4.2.2
+        uses: actions/checkout@v4
 
       - name: Build imagen backend
         run: docker build -t tienda-tech-backend:latest ./tienda-tech-backend
@@ -160,7 +161,7 @@ jobs:
           docker save tienda-tech-frontend:latest | gzip > frontend-image.tar.gz
 
       - name: Upload Docker image artifacts
-        uses: actions/upload-artifact@v4.6.2
+        uses: actions/upload-artifact@v4
         with:
           name: docker-images
           path: |
@@ -177,15 +178,18 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4.2.2
+        uses: actions/checkout@v4
 
       - name: Limpiar contenedores anteriores
         shell: powershell
         run: |
-          docker rm -f tienda-tech-frontend tienda-tech-backend tienda-tech-db 2>$null
-          docker compose down --remove-orphans 2>$null
+          $ErrorActionPreference = 'SilentlyContinue'
+          docker rm -f tienda-tech-frontend 2>&1 | Out-Null
+          docker rm -f tienda-tech-backend 2>&1 | Out-Null
+          docker rm -f tienda-tech-db 2>&1 | Out-Null
+          docker compose down --remove-orphans 2>&1 | Out-Null
+          $LASTEXITCODE = 0
           exit 0
-
       - name: Build y levantar servicios
         run: docker compose up --build -d
 
