@@ -197,12 +197,26 @@ jobs:
         run: sleep 25
 
       - name: Verificar contenedores en ejecución
+        shell: powershell
         run: |
           docker compose ps
           docker compose logs backend
           docker compose logs frontend
 
       - name: Health check del backend
+        shell: powershell
         run: |
-          curl --fail http://localhost:3001/api/health || \
-          (echo "❌ Health check falló" && docker compose logs backend && exit 1)
+          $response = $null
+          try {
+            $response = Invoke-WebRequest -Uri "http://localhost:3001/api/health" -UseBasicParsing
+          } catch {
+            Write-Host "❌ Health check falló"
+            docker compose logs backend
+            exit 1
+          }
+          if ($response.StatusCode -ne 200) {
+            Write-Host "❌ Health check falló con status $($response.StatusCode)"
+            docker compose logs backend
+            exit 1
+          }
+          Write-Host "✅ Health check OK"
