@@ -22,7 +22,11 @@ jest.mock("mysql2/promise", () => ({
 const mysql = require("mysql2/promise");
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: "http://localhost:8080",
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type"]
+}));
 app.use(express.json());
 
 const pool = mysql.createPool({});
