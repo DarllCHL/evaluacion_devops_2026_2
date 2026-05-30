@@ -17,10 +17,10 @@ Aplicación de ejemplo en 3 capas usando Docker y Docker Compose:
 - Cuenta en GitHub con acceso al repositorio
 - Secrets configurados en GitHub: `SNYK_TOKEN_3`, `SONAR_TOKEN_3`
 
----
-
 ## Estructura del proyecto
 
+
+```
 tienda-tech-LOCAL
 ├── .github
 │   └── workflows
@@ -36,11 +36,11 @@ tienda-tech-LOCAL
 │   ├── package.json
 │   ├── server.js
 │   └── server.test.js      # Pruebas unitarias con Jest
-├── tienda-tech-db
-├── Dockerfile
-└── init.sql
+└── tienda-tech-db
+    ├── Dockerfile
+    └── init.sql
+```
 
----
 
 ## Pipeline CI/CD
 
